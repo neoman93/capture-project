@@ -7,14 +7,29 @@ import athlete from "../img/athlete-small.png";
 import theracer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
 
+import { motion } from "framer-motion";
+import { pageAnimation, fade, photoAnim, lineAnim, slider } from "../animation";
+
 const OurWork = () => {
 	return (
-		<Work>
+		<Work
+			variants={pageAnimation}
+			initial="hidden"
+			animate="show"
+			exit="exit"
+			style={{ background: "#fff" }}
+		>
+			<Frame1 variants={slider}></Frame1>
+			<Frame2 variants={slider}></Frame2>
+			<Frame3 variants={slider}></Frame3>
+			<Frame4 variants={slider}></Frame4>
 			<Movie>
-				<h2>The Athelete</h2>
-				<div className="line"></div>
+				<motion.h2 variants={fade}>The Athelete</motion.h2>
+				<motion.div variants={lineAnim} className="line"></motion.div>
 				<Link to="/work/the-athlete">
-					<img src={athlete} alt="Athelete" />
+					<Hide>
+						<motion.img variants={photoAnim} src={athlete} alt="Athelete" />
+					</Hide>
 				</Link>
 			</Movie>
 			<Movie>
@@ -35,7 +50,7 @@ const OurWork = () => {
 	);
 };
 
-const Work = styled.div`
+const Work = styled(motion.div)`
 	min-height: 100vh;
 	overflow: hidden;
 	padding: 5rem 10rem;
@@ -49,7 +64,7 @@ const Movie = styled.div`
 	padding-bottom: 10rem;
 	.line {
 		height: 0.5rem;
-		background: #ccc;
+		background: #23d997;
 		margin-bottom: 3rem;
 	}
 	img {
@@ -57,6 +72,32 @@ const Movie = styled.div`
 		height: 70vh;
 		object-fit: cover;
 	}
+`;
+
+const Hide = styled.div`
+	overflow: hidden;
+`;
+
+const Frame1 = styled(motion.div)`
+	position: fixed;
+	left: 0;
+	top: 10%;
+	width: 100%;
+	height: 100vh;
+	background: #fffebf;
+	z-index: 2;
+`;
+
+const Frame2 = styled(Frame1)`
+	background: #ff8efb;
+`;
+
+const Frame3 = styled(Frame1)`
+	background: #8ed2ff;
+`;
+
+const Frame4 = styled(Frame1)`
+	background: #8effa0;
 `;
 
 export default OurWork;
