@@ -8,7 +8,14 @@ import theracer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
 
 import { motion } from "framer-motion";
-import { pageAnimation, fade, photoAnim, lineAnim, slider } from "../animation";
+import {
+	pageAnimation,
+	fade,
+	photoAnim,
+	lineAnim,
+	slider,
+	sliderContainer,
+} from "../animation";
 
 const OurWork = () => {
 	return (
@@ -19,10 +26,12 @@ const OurWork = () => {
 			exit="exit"
 			style={{ background: "#fff" }}
 		>
-			<Frame1 variants={slider}></Frame1>
-			<Frame2 variants={slider}></Frame2>
-			<Frame3 variants={slider}></Frame3>
-			<Frame4 variants={slider}></Frame4>
+			<motion.div variants={sliderContainer}>
+				<Frame1 variants={slider}></Frame1>
+				<Frame2 variants={slider}></Frame2>
+				<Frame3 variants={slider}></Frame3>
+				<Frame4 variants={slider}></Frame4>
+			</motion.div>
 			<Movie>
 				<motion.h2 variants={fade}>The Athelete</motion.h2>
 				<motion.div variants={lineAnim} className="line"></motion.div>
